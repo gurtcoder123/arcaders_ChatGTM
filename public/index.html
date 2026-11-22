@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="ChatGTM is an AI research workspace for company, market, competitor, and buyer intelligence.">
+  <meta name="theme-color" content="#f8f9fd">
+  <title>ChatGTM — Market research workspace</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script type="module" src="/app.js"></script>
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar" aria-label="Workspace navigation">
+      <button type="button" class="brand" id="brand" aria-label="ChatGTM research home">
+        <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span>ChatGTM<small>INTELLIGENCE WORKSPACE</small></span>
+      </button>
+      <button type="button" class="new-brief" id="new-brief"><span data-icon="plus"></span> New brief <kbd title="Keyboard shortcut">/</kbd></button>
+      <nav aria-label="Research lenses">
+        <div class="nav-label">WORKSPACE</div>
+        <div id="lens-nav"></div>
+      </nav>
+      <section class="recent-section" aria-label="Recent briefs">
+        <div class="nav-label">RECENT BRIEFS</div>
+        <div id="recent"></div>
+      </section>
+      <div class="sidebar-footer">
+        <span class="connection-icon" data-icon="database"></span>
+        <div><strong>Crustdata</strong><span id="connection-detail">Checking connection</span></div>
+        <span class="status-dot" id="connection-dot" aria-hidden="true"></span>
+      </div>
+    </aside>
+
+    <main class="workspace">
+      <header class="topbar">
+        <div class="breadcrumbs">
+          <button class="icon-button menu-toggle" id="menu-toggle" type="button" aria-label="Open workspace navigation" aria-expanded="false"><span data-icon="menu"></span></button>
+          <span class="crumb-root">Workspace</span><span class="small-icon" data-icon="chevron"></span><span id="breadcrumb">Research home</span>
+        </div>
+        <span id="mode-pill" class="mode-pill"><span class="status-dot"></span><span id="mode-label">Checking mode</span></span>
+      </header>
+      <div class="workspace-body">
+        <section class="home" id="home">
+          <section class="hero" aria-labelledby="hero-title">
+            <canvas id="hero-art" aria-hidden="true"></canvas>
+            <div class="hero-content">
+              <p class="hero-label"><span data-icon="sparkle"></span> AI MARKET RESEARCH</p>
+              <h1 id="hero-title">Find your next<br><em>market.</em></h1>
+              <p class="hero-description">Research companies, map the competition, and find your next customers from one workspace.</p>
+              <form class="composer" id="composer">
+                <label for="question" class="visually-hidden">Research question</label>
+                <textarea id="question" rows="2" name="query" minlength="3" maxlength="2000" placeholder="What do you want to research?" required></textarea>
+                <div class="composer-controls">
+                  <label class="lens-picker">
+                    <span data-icon="sliders"></span>
+                    <span class="visually-hidden">Research lens</span>
+                    <select id="lens" name="lens"></select>
+                    <span data-icon="chevron-down"></span>
+                  </label>
+                  <button class="primary-button" type="submit">Run research <span data-icon="arrow-right"></span></button>
+                </div>
+              </form>
+              <p class="hero-error" id="question-error" role="alert" hidden></p>
+            </div>
+          </section>
+
+          <section class="examples" aria-labelledby="examples-title">
+            <div class="section-heading">
+              <div><h2 id="examples-title">Start with an example</h2><p>Choose a starting point for your research brief.</p></div>
+            </div>
+            <div class="example-grid" id="example-grid"></div>
+          </section>
+
+          <div class="data-banner">
+            <span class="data-icon" data-icon="database"></span>
+            <div><strong>Powered by Crustdata</strong><p>Company profiles, people data, and public web evidence for your research.</p></div>
+            <a href="https://docs.crustdata.com/" target="_blank" rel="noopener noreferrer">Explore data sources <span data-icon="arrow-up-right"></span></a>
+          </div>
+        </section>
+        <section id="working" class="working" hidden aria-labelledby="working-title">
+          <div class="working-card">
+            <span class="working-icon" data-icon="sparkle"></span>
+            <h1 id="working-title">Building your brief</h1>
+            <p id="working-query"></p>
+            <ol id="progress-list" aria-label="Research progress"></ol>
+            <button type="button" id="cancel" class="secondary-button">Cancel research</button>
+          </div>
+        </section>
+        <section id="brief" class="brief" hidden aria-label="Research brief"></section>
+      </div>
+    </main>
+  </div>
+  <div id="announcement" class="visually-hidden" aria-live="polite"></div>
+  <div id="nav-scrim" hidden></div>
+</body>
+</html>
